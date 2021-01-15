@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">NoteApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="edited">(Edited)</string>
+    <string name="long_description_text">Consider this as a showcase of your skills. Approach it as if you are going to make a pull request on our main/master branch. We are expecting at least: • Clear, defined architecture. • Apply the Material Design Guidelines as much as possible. • Meaningful tests (You do not need to have 100% coverage, but we will be looking for tests). • Good and lint verified syntax.</string>
+    <string name="long_url">https://www.google.com/just-a-random-image-i-search-for-on-google-yeah/this-is-page-2</string>
+
 </resources>
