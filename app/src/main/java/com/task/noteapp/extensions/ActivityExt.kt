@@ -1,4 +1,4 @@
-package io.budge.android.escribir.extensions
+package com.task.noteapp.extensions
 
 import android.app.Activity
 import android.content.ActivityNotFoundException
@@ -9,7 +9,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.annotation.AttrRes
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.net.toUri
-import io.budge.android.escribir.R
+import com.task.noteapp.R
 
 fun Activity.disableTouch() {
     window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,

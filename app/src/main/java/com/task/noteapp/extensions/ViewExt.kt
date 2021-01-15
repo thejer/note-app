@@ -1,4 +1,4 @@
-package io.budge.android.escribir.extensions
+package com.task.noteapp.extensions
 
 import android.view.LayoutInflater
 import android.view.View

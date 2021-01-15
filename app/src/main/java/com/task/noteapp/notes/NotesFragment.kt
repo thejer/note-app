@@ -1,4 +1,4 @@
-package com.task.noteapp.noteslist
+package com.task.noteapp.notes
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
