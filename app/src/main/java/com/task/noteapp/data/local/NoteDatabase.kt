@@ -6,5 +6,5 @@ import com.task.noteapp.data.model.Note
 
 @Database(entities = [Note::class], version = 1, exportSchema = false)
 abstract class NoteDatabase : RoomDatabase() {
-    abstract fun noteDao(): NoteDao
+    abstract val noteDao: NoteDao
 }

@@ -1,0 +1,103 @@
+package com.task.noteapp.notes
+
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.task.noteapp.LiveDataTestUtil
+import com.task.noteapp.data.FakeRepository
+import com.task.noteapp.data.FakeRepository.Companion.NO_NOTES
+import com.task.noteapp.data.model.Note
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ObsoleteCoroutinesApi
+import kotlinx.coroutines.newSingleThreadContext
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.setMain
+import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.Matchers.`is`
+import org.junit.After
+import org.junit.Before
+import org.junit.Rule
+import org.junit.Test
+import org.junit.runner.RunWith
+import org.junit.runners.JUnit4
+import java.util.*
+
+@RunWith(JUnit4::class)
+class NotesViewModelTest {
+
+    @get:Rule
+    var instantExecutorRule = InstantTaskExecutorRule()
+
+    private lateinit var repository: FakeRepository
+    private lateinit var viewModel: NotesViewModel
+
+    @OptIn(ObsoleteCoroutinesApi::class)
+    private val mainThreadSurrogate = newSingleThreadContext("UI thread")
+
+    @Before
+    fun setup() {
+        Dispatchers.setMain(mainThreadSurrogate)
+        repository = FakeRepository()
+        val notes = mutableListOf(
+            Note(
+                UUID.randomUUID().toString(),
+                "I see the stars",
+                "The stars see me, God bless the stars and God Bless me.",
+                "https://picsum.photos/200",
+                false,
+                "22/3/2021"
+            ),
+            Note(
+                UUID.randomUUID().toString(),
+                "I see the Moon",
+                "The stars see me, God bless the stars and God Bless me.",
+                "https://picsum.photos/200",
+                false,
+                "22/3/2021"
+            ),
+            Note(
+                UUID.randomUUID().toString(),
+                "I see the Sun",
+                "The stars see me, God bless the stars and God Bless me.",
+                "https://picsum.photos/200",
+                false,
+                "22/3/2021"
+            ),
+            Note(
+                UUID.randomUUID().toString(),
+                "I see the Nebula",
+                "The stars see me, God bless the stars and God Bless me.",
+                "https://picsum.photos/200",
+                false,
+                "22/3/2021"
+            ),
+            Note(
+                UUID.randomUUID().toString(),
+                "I see the Jupiter",
+                "The stars see me, God bless the stars and God Bless me.",
+                "https://picsum.photos/200",
+                false,
+                "22/3/2021"
+            ))
+        repository.saveNotes(notes)
+        viewModel = NotesViewModel(repository)
+    }
+
+    @After
+    fun tearDown() {
+        Dispatchers.resetMain()
+        mainThreadSurrogate.close()
+    }
+
+    @Test
+    fun `Get notes on success notes count must be 5`() {
+        viewModel.getNotes()
+        assertThat(LiveDataTestUtil.getValue(viewModel.notes).size, `is`(5))
+    }
+
+    @Test
+    fun `Get notes on failure error message must be valid`() {
+        repository.clearNotes()
+        viewModel.getNotes()
+        assertThat(LiveDataTestUtil.getValue(viewModel.errorMessage), `is`(NO_NOTES))
+    }
+
+}

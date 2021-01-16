@@ -2,9 +2,9 @@ package com.task.noteapp.di
 
 import android.app.Application
 import androidx.room.Room
-import com.task.noteapp.data.local.NoteDataSource
-import com.task.noteapp.data.local.NoteDatabase
 import com.task.noteapp.data.NoteRepository
+import com.task.noteapp.data.local.INoteRepository
+import com.task.noteapp.data.local.NoteDatabase
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -21,7 +21,7 @@ class LocalStorageModule {
 
     @Provides
     @Singleton
-    fun provideNoteRepository(noteDatabase: NoteDatabase): NoteDataSource {
+    fun provideNoteRepository(noteDatabase: NoteDatabase): INoteRepository {
         return NoteRepository(noteDatabase)
     }
 

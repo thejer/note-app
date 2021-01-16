@@ -7,10 +7,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.task.noteapp.R
 import com.task.noteapp.data.model.Note
 import com.task.noteapp.databinding.NoteItemLayoutBinding
+import com.task.noteapp.extensions.hide
 import com.task.noteapp.extensions.inflate
+import com.task.noteapp.extensions.show
 import com.task.noteapp.extensions.underline
 
-class NotesAdapter : ListAdapter<Note, NotesAdapter.NotesViewHolder>(DiffCallback) {
+class NotesAdapter (
+    val onImageUrlClicked: (String) -> Unit,
+    val noteClickListener: (Note) -> Unit
+)
+    : ListAdapter<Note, NotesAdapter.NotesViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesViewHolder =
         NotesViewHolder(NoteItemLayoutBinding.bind(parent.inflate(R.layout.note_item_layout)))
@@ -30,9 +36,21 @@ class NotesAdapter : ListAdapter<Note, NotesAdapter.NotesViewHolder>(DiffCallbac
 
     inner class NotesViewHolder(private val binding: NoteItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        init {
+            val note = getItem(adapterPosition)
+            itemView.setOnClickListener {
+                noteClickListener(note)
+            }
+            binding.imageUrl.setOnClickListener {
+                onImageUrlClicked(note.imageUrl?: "")
+            }
+        }
         fun bind(note: Note) {
             binding.note = note
             binding.imageUrl.underline()
+            if (note.imageUrl.isNullOrBlank()) binding.imageUrl.hide()
+            else binding.imageUrl.show()
+            if (note.isEdited) binding.isEdited.show() else binding.isEdited.hide()
             binding.executePendingBindings()
         }
     }
