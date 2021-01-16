@@ -34,6 +34,10 @@ class NotesFragment : Fragment() {
         val viewModel = ViewModelProvider(this, viewModelFactory).get(NotesViewModel::class.java)
         binding.viewModel = viewModel
         binding.notesRecyclerview.adapter = NotesAdapter()
+
+        viewModel.getNotes()
+
+
     }
 
 }

@@ -10,7 +10,7 @@ interface NoteDao {
     suspend fun getAllNotes(): MutableList<Note>
 
     @Query("SELECT * FROM note WHERE id = :id")
-    suspend fun getNoteById(id: String): Note
+    suspend fun getNoteById(id: String): Note?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNote(note: Note)

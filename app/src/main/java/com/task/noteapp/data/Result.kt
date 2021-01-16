@@ -1,4 +1,4 @@
-package app.com.tradebuza.networkutils
+package com.task.noteapp.data
 
 sealed class Result<out T : Any> {
 

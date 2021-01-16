@@ -8,10 +8,6 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
-    dataBinding {
-        enabled = true
-    }
-    
     defaultConfig {
         applicationId "com.task.noteapp"
         minSdkVersion 21
@@ -36,6 +32,8 @@ android {
         jvmTarget = '1.8'
     }
 }
+
+android.buildFeatures.dataBinding true
 
 dependencies {
     def room_version = "2.2.6"
