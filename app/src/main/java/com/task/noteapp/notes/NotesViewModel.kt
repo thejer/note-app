@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.task.noteapp.data.NoteDataSource
+import com.task.noteapp.data.local.NoteDataSource
 import com.task.noteapp.data.Result
 import com.task.noteapp.data.model.Note
 import kotlinx.coroutines.launch

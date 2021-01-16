@@ -1,4 +1,4 @@
-package com.task.noteapp.data
+package com.task.noteapp.data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

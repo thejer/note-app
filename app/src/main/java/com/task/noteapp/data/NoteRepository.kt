@@ -1,5 +1,7 @@
 package com.task.noteapp.data
 
+import com.task.noteapp.data.local.NoteDataSource
+import com.task.noteapp.data.local.NoteDatabase
 import com.task.noteapp.data.model.Note
 import com.task.noteapp.utils.Constants.GENERIC_ERROR_CODE
 import com.task.noteapp.utils.Constants.GENERIC_ERROR_MESSAGE

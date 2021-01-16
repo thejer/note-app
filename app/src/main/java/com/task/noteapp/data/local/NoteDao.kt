@@ -1,4 +1,4 @@
-package com.task.noteapp.data
+package com.task.noteapp.data.local
 
 import androidx.room.*
 import com.task.noteapp.data.model.Note
@@ -17,4 +17,7 @@ interface NoteDao {
 
     @Update
     suspend fun updateNote(note: Note)
+
+    @Query("DELETE FROM note WHERE id = :noteId")
+    suspend fun deleteNote(noteId: String)
 }

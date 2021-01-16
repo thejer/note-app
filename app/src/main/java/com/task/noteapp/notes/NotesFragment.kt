@@ -36,8 +36,6 @@ class NotesFragment : Fragment() {
         binding.notesRecyclerview.adapter = NotesAdapter()
 
         viewModel.getNotes()
-
-
     }
 
 }
