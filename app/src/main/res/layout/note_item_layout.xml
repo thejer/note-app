@@ -13,6 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:elevation="16dp"
+        android:focusable="true"
         app:cardCornerRadius="5dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -63,8 +66,9 @@
                 android:layout_marginEnd="16dp"
                 android:ellipsize="end"
                 android:maxLines="1"
+                android:padding="2dp"
                 android:textColor="@color/link_blue"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:text="@{note.imageUrl}"
                 app:layout_constraintEnd_toStartOf="@id/is_edited"
                 app:layout_constraintStart_toStartOf="parent"

@@ -1,6 +1,6 @@
 package com.task.noteapp.data
 
-import com.task.noteapp.data.local.NoteDataSource
+import com.task.noteapp.data.local.INoteRepository
 import com.task.noteapp.data.local.NoteDatabase
 import com.task.noteapp.data.model.Note
 import com.task.noteapp.utils.Constants.GENERIC_ERROR_CODE
@@ -12,9 +12,9 @@ import javax.inject.Inject
 
 class NoteRepository @Inject constructor(
     noteDatabase: NoteDatabase
-) : NoteDataSource {
+) : INoteRepository {
 
-    private val noteDao = noteDatabase.noteDao()
+    private val noteDao = noteDatabase.noteDao
     private val ioDispatcher = Dispatchers.IO
 
     override suspend fun getNotes(): Result<MutableList<Note>> =

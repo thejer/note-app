@@ -1,6 +1,7 @@
 package com.task.noteapp.data.local
 
 import android.content.Context
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -10,6 +11,7 @@ import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.After
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import java.io.IOException
@@ -22,13 +24,16 @@ class NoteDatabaseTest {
 
     private lateinit var db: NoteDatabase
 
+    @get:Rule
+    val instantExecutorRule = InstantTaskExecutorRule()
+
     @Before
     fun createDb() {
         val context = ApplicationProvider.getApplicationContext<Context>()
         db = Room.inMemoryDatabaseBuilder(
             context, NoteDatabase::class.java
         ).build()
-        noteDao = db.noteDao()
+        noteDao = db.noteDao
     }
 
     @After

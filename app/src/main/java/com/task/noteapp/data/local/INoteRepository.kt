@@ -3,7 +3,7 @@ package com.task.noteapp.data.local
 import com.task.noteapp.data.Result
 import com.task.noteapp.data.model.Note
 
-interface NoteDataSource {
+interface INoteRepository {
 
     suspend fun getNotes(): Result<MutableList<Note>>
 

@@ -4,14 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.task.noteapp.data.local.NoteDataSource
 import com.task.noteapp.data.Result
+import com.task.noteapp.data.local.INoteRepository
 import com.task.noteapp.data.model.Note
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class NotesViewModel @Inject constructor(
-    private val noteDataSource: NoteDataSource
+    private val noteRepository: INoteRepository
 
 ): ViewModel() {
 
@@ -19,12 +19,18 @@ class NotesViewModel @Inject constructor(
     val notes: LiveData<MutableList<Note>>
         get() = _notes
 
+    private val _errorMessage = MutableLiveData<String>()
+    val errorMessage: LiveData<String>
+        get() = _errorMessage
 
     fun getNotes() {
         viewModelScope.launch {
-            when (val result = noteDataSource.getNotes()) {
+            when (val result = noteRepository.getNotes()) {
                 is Result.Success -> {
                     _notes.value = result.data
+                }
+                is Result.Error -> {
+                    _errorMessage.value = result.errorMessage
                 }
             }
         }

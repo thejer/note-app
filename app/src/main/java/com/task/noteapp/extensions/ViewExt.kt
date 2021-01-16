@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.LayoutRes
 import androidx.core.view.children
+import com.google.android.material.snackbar.Snackbar
 
 fun View.show() {
     visibility = VISIBLE
@@ -31,4 +32,10 @@ inline fun <reified T> ViewGroup.inflate(@LayoutRes layoutRes: Int): T {
 
 fun TextView.underline() {
     paintFlags = paintFlags or Paint.UNDERLINE_TEXT_FLAG
+}
+
+fun View.showSnackbar(snackbarText: String, timeLength: Int) {
+    Snackbar.make(this, snackbarText, timeLength).run {
+        show()
+    }
 }
