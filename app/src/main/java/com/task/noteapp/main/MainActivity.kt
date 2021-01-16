@@ -1,7 +1,7 @@
 package com.task.noteapp.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.task.noteapp.R
 
 class MainActivity : AppCompatActivity() {
