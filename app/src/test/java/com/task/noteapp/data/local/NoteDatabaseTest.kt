@@ -39,7 +39,7 @@ class NoteDatabaseTest {
 
     @Test
     @Throws(Exception::class)
-    fun insertNoteAndGetNotes() = runBlocking {
+    fun `insertNote And GetNotes`() = runBlocking {
         val note = Note(
             UUID.randomUUID().toString(),
             "I see the stars",
@@ -56,7 +56,7 @@ class NoteDatabaseTest {
 
     @Test
     @Throws(Exception::class)
-    fun insertNoteAndGetNoteById() = runBlocking {
+    fun `insertNote And GetNoteById`() = runBlocking {
         val note = Note(
             UUID.randomUUID().toString(),
             "I see the stars",
@@ -72,7 +72,7 @@ class NoteDatabaseTest {
 
     @Test
     @Throws(Exception::class)
-    fun insertNoteAndUpdateNote() = runBlocking {
+    fun `insertNote And UpdateNote`() = runBlocking {
         val note = Note(
             UUID.randomUUID().toString(),
             "I see the stars",
@@ -94,7 +94,7 @@ class NoteDatabaseTest {
 
     @Test
     @Throws(Exception::class)
-    fun insertNoteAndDeleteNote() = runBlocking {
+    fun `insertNote And DeleteNote`() = runBlocking {
         val note = Note(
             UUID.randomUUID().toString(),
             "I see the stars",

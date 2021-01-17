@@ -9,8 +9,10 @@ interface INoteRepository {
 
     suspend fun getNoteById(noteId: String): Result<Note>
 
-    suspend fun saveNote(note: Note)
+    suspend fun saveNote(note: Note): Result<Long>
 
-    suspend fun updateNote(note: Note)
+    suspend fun updateNote(note: Note): Result<Int>
+
+    suspend fun deleteNote(noteId: String): Result<Int>
 
 }

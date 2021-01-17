@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:background="@color/black_500"
-            tools:context=".addnote.AddNoteFragment">
+            tools:context=".editnote.EditNoteFragment">
 
             <EditText
                 android:id="@+id/title_field"

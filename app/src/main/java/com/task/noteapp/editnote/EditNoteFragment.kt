@@ -1,21 +1,21 @@
-package com.task.noteapp.addnote
+package com.task.noteapp.editnote
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.task.noteapp.databinding.FragmentAddNoteBinding
+import com.task.noteapp.databinding.FragmentEditNoteBinding
 
-class AddNoteFragment : Fragment() {
+class EditNoteFragment : Fragment() {
 
-    lateinit var binding: FragmentAddNoteBinding
+    lateinit var binding: FragmentEditNoteBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentAddNoteBinding.inflate(inflater)
+        binding = FragmentEditNoteBinding.inflate(inflater)
         binding.lifecycleOwner = this
         return binding.root
     }

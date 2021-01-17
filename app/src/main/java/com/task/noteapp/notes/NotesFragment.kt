@@ -42,7 +42,7 @@ class NotesFragment : Fragment() {
             Toast.makeText(context, it.title, Toast.LENGTH_SHORT).show()
         }
         binding.addNote.setOnClickListener {
-            findNavController().navigate(NotesFragmentDirections.actionNotesFragmentToAddNoteFragment())
+            findNavController().navigate(NotesFragmentDirections.actionNotesFragmentToEditNoteFragment())
         }
         viewModel.errorMessage.observe(viewLifecycleOwner, {
             it?.let {
