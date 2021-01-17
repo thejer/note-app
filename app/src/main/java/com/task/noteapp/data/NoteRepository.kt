@@ -1,5 +1,6 @@
 package com.task.noteapp.data
 
+import android.util.Log
 import com.task.noteapp.data.local.INoteRepository
 import com.task.noteapp.data.local.NoteDatabase
 import com.task.noteapp.data.model.Note
@@ -22,6 +23,7 @@ class NoteRepository @Inject constructor(
             return@withContext try {
                 Result.Success(noteDao.getAllNotes())
             } catch (e: Exception) {
+                Log.e("getNotes", "getNotes: ", e)
                 Result.Error(GENERIC_ERROR_CODE, GENERIC_ERROR_MESSAGE)
             }
         }

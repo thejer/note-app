@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:background="@color/black_500"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:background="@color/black_500"
+            tools:context=".addnote.AddNoteFragment">
+
+            <EditText
+                android:id="@+id/title_field"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:hint="@string/title"
+                android:textSize="30sp"
+                android:background="@android:color/transparent"
+                android:textColorHint="@color/hint_white"
+                android:layout_height="60dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/hint_white"
+                app:layout_constraintTop_toBottomOf="@id/title_field"
+                />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/image_url_input_layout"
+                app:layout_constraintTop_toBottomOf="@id/title_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:hintTextColor="@color/hint_white"
+                app:startIconDrawable="@drawable/ic_link"
+                android:background="@color/black_500"
+                android:hint="@string/image_link">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/hint_white"
+                    android:textSize="20sp"
+                    android:id="@+id/image_url_input"
+                    android:textColorHint="@color/hint_white"
+                    android:background="@color/black_500"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <EditText
+                android:id="@+id/desc_field"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:layout_marginBottom="20dp"
+                android:gravity="start|top"
+                app:layout_constraintTop_toBottomOf="@id/image_url_input_layout"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:textSize="20sp"
+                android:inputType="textMultiLine"
+                android:singleLine="false"
+                android:textColorHint="@color/hint_white"
+                android:hint="@string/note_description"
+                android:background="@android:color/transparent"
+                />
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/add_note"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_save"
+                app:maxImageSize="30dp"
+                android:tint="@color/white"
+                app:fabSize="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_margin="16dp"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>

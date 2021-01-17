@@ -1,6 +1,7 @@
 package com.task.noteapp.di
 
 import android.app.Application
+import com.task.noteapp.addnote.AddNoteFragment
 import com.task.noteapp.notes.NotesFragment
 import dagger.BindsInstance
 import dagger.Component
@@ -11,6 +12,8 @@ import javax.inject.Singleton
 interface AppComponent {
 
     fun inject(target: NotesFragment)
+
+    fun inject(target: AddNoteFragment)
 
     @Component.Builder
     interface Builder {
