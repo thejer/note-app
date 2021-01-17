@@ -6,6 +6,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.TextView
 import androidx.annotation.LayoutRes
 import androidx.core.view.children
@@ -39,3 +40,11 @@ fun View.showSnackbar(snackbarText: String, timeLength: Int) {
         show()
     }
 }
+
+
+fun TextView.isEmpty() = text.isNullOrBlank()
+
+fun TextView.validate(errorMessage: String = "This Field is required") =
+    (!isEmpty()).also { if (!it) error = errorMessage }
+
+fun EditText.stringContent(): String = text.toString().trim()

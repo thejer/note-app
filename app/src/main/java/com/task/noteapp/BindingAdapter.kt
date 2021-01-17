@@ -1,8 +1,10 @@
 package com.task.noteapp
 
+import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.task.noteapp.data.model.Note
 import com.task.noteapp.extensions.hide
 import com.task.noteapp.extensions.show
@@ -26,5 +28,12 @@ fun bindEmptyNotesView(emptyNotesView: ConstraintLayout, data: MutableList<Note>
         emptyNotesView.show()
     } else {
         emptyNotesView.hide()
+    }
+}
+
+@BindingAdapter("imageUrl")
+fun bindImageView(imageView: ImageView, url: String?) {
+    imageView.load(url) {
+        crossfade(true)
     }
 }

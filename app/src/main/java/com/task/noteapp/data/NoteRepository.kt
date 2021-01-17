@@ -26,10 +26,10 @@ class NoteRepository @Inject constructor(
     override suspend fun getNotes(): Result<MutableList<Note>> =
         withContext(ioDispatcher) {
             try {
-                Success(noteDao.getAllNotes())
+                return@withContext Success(noteDao.getAllNotes())
             } catch (e: Exception) {
                 Log.e("getNotes", "getNotes: ", e)
-                Error(GENERIC_ERROR_CODE, GENERIC_ERROR_MESSAGE)
+                return@withContext Error(GENERIC_ERROR_CODE, GENERIC_ERROR_MESSAGE)
             }
         }
 
@@ -38,11 +38,11 @@ class NoteRepository @Inject constructor(
             try {
                 val note = noteDao.getNoteById(noteId)
                 note?.let {
-                    Success(it)
+                    return@withContext Success(it)
                 }
-                Error(GENERIC_ERROR_CODE, NOTE_NOT_FOUND)
+                return@withContext Error(GENERIC_ERROR_CODE, NOTE_NOT_FOUND)
             } catch (e: Exception) {
-                Error(GENERIC_ERROR_CODE, GENERIC_ERROR_MESSAGE)
+                return@withContext Error(GENERIC_ERROR_CODE, GENERIC_ERROR_MESSAGE)
             }
         }
 
@@ -51,11 +51,11 @@ class NoteRepository @Inject constructor(
             try {
                 val noteId = noteDao.insertNote(note)
                 noteId?.let {
-                    Success(it)
+                    return@withContext Success(it)
                 }
-                Error(GENERIC_ERROR_CODE, ERROR_ADDING_NOTE)
+                return@withContext Error(GENERIC_ERROR_CODE, ERROR_ADDING_NOTE)
             } catch (e: Exception) {
-                Error(GENERIC_ERROR_CODE, GENERIC_ERROR_MESSAGE)
+                return@withContext Error(GENERIC_ERROR_CODE, GENERIC_ERROR_MESSAGE)
             }
         }
 
@@ -64,13 +64,13 @@ class NoteRepository @Inject constructor(
             try {
                 val updatedNotes = noteDao.updateNote(note)
                 if (updatedNotes == null || updatedNotes == 0)
-                    Error(
+                    return@withContext Error(
                         GENERIC_ERROR_CODE,
                         ERROR_UPDATING_NOTE
                     ) else
-                    Success(updatedNotes)
+                    return@withContext Success(updatedNotes)
             } catch (e: Exception) {
-                Error(GENERIC_ERROR_CODE, GENERIC_ERROR_MESSAGE)
+                return@withContext Error(GENERIC_ERROR_CODE, GENERIC_ERROR_MESSAGE)
             }
 
         }
@@ -80,13 +80,13 @@ class NoteRepository @Inject constructor(
             try {
                 val deletedNotes = noteDao.deleteNote(noteId)
                 if (deletedNotes == null || deletedNotes == 0)
-                    Error(
+                    return@withContext Error(
                         GENERIC_ERROR_CODE,
                         ERROR_DELETING_NOTE
                     ) else
-                    Success(deletedNotes)
+                    return@withContext Success(deletedNotes)
             } catch (e: Exception) {
-                Error(GENERIC_ERROR_CODE, GENERIC_ERROR_MESSAGE)
+                return@withContext Error(GENERIC_ERROR_CODE, GENERIC_ERROR_MESSAGE)
             }
 
         }

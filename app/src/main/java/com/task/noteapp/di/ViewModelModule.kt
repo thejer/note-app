@@ -3,6 +3,7 @@ package com.task.noteapp.di
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.task.noteapp.editnote.EditNoteViewModel
+import com.task.noteapp.notedetails.NoteDetailsViewModel
 import com.task.noteapp.notes.NotesViewModel
 import dagger.Binds
 import dagger.Module
@@ -24,5 +25,10 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(EditNoteViewModel::class)
     abstract fun bindAddNoteViewModel(viewModel: EditNoteViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(NoteDetailsViewModel::class)
+    abstract fun bindAddNoteDetailsViewModel(viewModel: NoteDetailsViewModel): ViewModel
 
 }

@@ -3,12 +3,15 @@ package com.task.noteapp.extensions
 import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.AttrRes
+import androidx.browser.customtabs.CustomTabColorSchemeParams
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.net.toUri
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.task.noteapp.R
 
 fun Activity.disableTouch() {
@@ -29,8 +32,12 @@ fun Activity.hideKeyBoard() {
 }
 
 fun Activity.viewUrl(url: String) {
-    val customTabsIntent = CustomTabsIntent.Builder()
+    val params = CustomTabColorSchemeParams.Builder()
         .setToolbarColor(resolveColor(R.attr.colorPrimary))
+        .build()
+
+    val customTabsIntent = CustomTabsIntent.Builder()
+        .setColorSchemeParams(CustomTabsIntent.COLOR_SCHEME_DARK, params)
         .build()
     try {
         customTabsIntent.launchUrl(this, url.toUri())
@@ -50,4 +57,25 @@ private fun Activity.resolveColor(@AttrRes attr: Int): Int {
     } finally {
         a.recycle()
     }
+}
+
+fun Context.showDialog(
+    paramsMap: Map<String, String>,
+    neutralAction: (dialog: DialogInterface) -> Unit,
+    negativeAction: (dialog: DialogInterface) -> Unit,
+    positiveAction: (dialog: DialogInterface) -> Unit
+) {
+    MaterialAlertDialogBuilder(this)
+        .setTitle(paramsMap["title"])
+        .setMessage(paramsMap["message"])
+        .setNeutralButton(paramsMap["neutral_text"]) { dialog, _ ->
+            neutralAction(dialog)
+        }
+        .setNegativeButton(paramsMap["negative_text"]) { dialog, _ ->
+            negativeAction(dialog)
+        }
+        .setPositiveButton(paramsMap["positive_text"]) { dialog, _ ->
+            positiveAction(dialog)
+        }
+        .show()
 }

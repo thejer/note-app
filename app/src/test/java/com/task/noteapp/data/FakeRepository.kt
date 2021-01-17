@@ -19,7 +19,7 @@ class FakeRepository: INoteRepository {
     override suspend fun getNoteById(noteId: String): Result<Note> {
         val note = notesDBData[noteId]
         note?.let {
-            return Success(notesDBData[noteId]!!)
+            return Success(it)
         }
         return Error(ERROR_CODE, NO_SUCH_NOTE)
     }
@@ -44,7 +44,8 @@ class FakeRepository: INoteRepository {
     }
 
     override suspend fun deleteNote(noteId: String): Result<Int> {
-        notesDBData.remove(noteId)
+        if (noteId != "noteId2")
+            notesDBData.remove(noteId)
         val deletedNote = notesDBData[noteId]
         deletedNote?.let {
             return Error(ERROR_CODE, NOTE_DELETION_FAILED)

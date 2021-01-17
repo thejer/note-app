@@ -43,12 +43,13 @@ class EditNoteViewModelTest {
 
     @After
     fun tearDown() {
+        repository.clearNotes()
         Dispatchers.resetMain()
         mainThreadSurrogate.close()
     }
 
     @Test
-    fun `Save Note on success noteAdded is true`() {
+    fun `saveNote on success noteAdded is true`() {
         val note =  Note(
             UUID.randomUUID().toString(),
             "I see the stars",
@@ -63,7 +64,7 @@ class EditNoteViewModelTest {
     }
 
     @Test
-    fun `Update Note on success noteEdited is true`() {
+    fun `updateNote on success noteEdited is true`() {
         val note =  Note(
             UUID.randomUUID().toString(),
             "I see the stars",
@@ -74,11 +75,11 @@ class EditNoteViewModelTest {
         )
 
         viewModel.updateNote(note)
-        assertThat(LiveDataTestUtil.getValue(viewModel.noteEdited), `is`(true))
+        assertThat(LiveDataTestUtil.getValue(viewModel.noteUpdated), `is`(true))
     }
 
     @Test
-    fun `Save Note on failed noteAdded is false and errorMessage is as expected` () {
+    fun `saveNote on failed errorMessage is as expected` () {
         val note =  Note(
             UUID.randomUUID().toString(),
             "failed",
@@ -89,12 +90,11 @@ class EditNoteViewModelTest {
         )
 
         viewModel.saveNote(note)
-        assertThat(LiveDataTestUtil.getValue(viewModel.noteAdded), `is`(false))
         assertThat(LiveDataTestUtil.getValue(viewModel.errorMessage), `is`(NOTE_ADDING_FAILED))
     }
 
     @Test
-    fun `Update Note on failed noteEdited is false and errorMessage is as expected`() {
+    fun `updateNote on failed errorMessage is as expected`() {
         val note =  Note(
             UUID.randomUUID().toString(),
             "I see the stars",
@@ -105,7 +105,6 @@ class EditNoteViewModelTest {
         )
 
         viewModel.updateNote(note)
-        assertThat(LiveDataTestUtil.getValue(viewModel.noteEdited), `is`(false))
         assertThat(LiveDataTestUtil.getValue(viewModel.errorMessage), `is`(NOTE_UPDATE_FAILED))
     }
 }

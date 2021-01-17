@@ -14,7 +14,7 @@ import com.task.noteapp.extensions.underline
 
 class NotesAdapter (
     val onImageUrlClicked: (String) -> Unit,
-    val noteClickListener: (Note) -> Unit
+    val noteClickListener: (String) -> Unit
 )
     : ListAdapter<Note, NotesAdapter.NotesViewHolder>(DiffCallback) {
 
@@ -36,17 +36,14 @@ class NotesAdapter (
 
     inner class NotesViewHolder(private val binding: NoteItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        init {
-            val note = getItem(adapterPosition)
+        fun bind(note: Note) {
+            binding.note = note
             itemView.setOnClickListener {
-                noteClickListener(note)
+                noteClickListener(note.id)
             }
             binding.imageUrl.setOnClickListener {
                 onImageUrlClicked(note.imageUrl?: "")
             }
-        }
-        fun bind(note: Note) {
-            binding.note = note
             binding.imageUrl.underline()
             if (note.imageUrl.isNullOrBlank()) binding.imageUrl.hide()
             else binding.imageUrl.show()
