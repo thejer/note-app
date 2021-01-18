@@ -12,14 +12,12 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:background="@color/black_500"
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:background="@color/black_500"
             tools:context=".editnote.EditNoteFragment">
 
             <EditText
@@ -32,13 +30,12 @@
                 android:textSize="30sp"
                 android:text="@{note.title}"
                 android:background="@android:color/transparent"
-                android:textColorHint="@color/hint_white"
                 android:layout_height="60dp"/>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="@color/hint_white"
+                android:background="@color/black"
                 app:layout_constraintTop_toBottomOf="@id/title_field"
                 />
 
@@ -54,10 +51,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
                     android:text="@{note.imageUrl}"
                     android:textSize="20sp"
-                    android:background="@color/black_500"
                     android:id="@+id/image_url_input"
                     android:textColorHint="@color/hint_white"
                     />
@@ -93,7 +88,6 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_save"
                 app:maxImageSize="30dp"
-                android:tint="@color/white"
                 app:fabSize="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

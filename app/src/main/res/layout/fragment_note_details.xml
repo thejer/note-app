@@ -13,7 +13,6 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black_500"
         tools:context=".notedetails.NoteDetailsFragment">
 
         <ScrollView
@@ -88,7 +87,6 @@
             android:layout_margin="16dp"
             android:contentDescription="@string/edit_note"
             android:src="@drawable/ic_edit"
-            android:tint="@color/white"
             android:visibility="gone"
             app:fabSize="normal"
             app:maxImageSize="30dp" />
