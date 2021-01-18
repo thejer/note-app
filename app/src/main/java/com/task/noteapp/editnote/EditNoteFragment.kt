@@ -114,22 +114,26 @@ class EditNoteFragment : Fragment() {
     }
 
     private fun updateNote(note: Note){
+        val lastModifiedDate = DateUtils.getCurrentDate(false)
         note.title = binding.titleField.stringContent()
         note.description = binding.descField.stringContent()
         note.imageUrl = binding.imageUrlInput.stringContent()
+        note.lastModifiedDate = lastModifiedDate
         note.isEdited = true
         viewModel.updateNote(note)
     }
 
     private fun createNote() {
-        val createdDate = DateUtils.getCurrentDate()
+        val createdDate = DateUtils.getCurrentDate(true)
+        val lastModifiedDate = DateUtils.getCurrentDate(false)
         val note = Note(
             UUID.randomUUID().toString(),
             binding.titleField.stringContent(),
             binding.descField.stringContent(),
             binding.imageUrlInput.stringContent(),
             false,
-            createdDate
+            createdDate,
+            lastModifiedDate
         )
         viewModel.saveNote(note)
     }

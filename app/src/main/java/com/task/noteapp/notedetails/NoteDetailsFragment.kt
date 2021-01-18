@@ -70,6 +70,8 @@ class NoteDetailsFragment : Fragment() {
                 if (it.imageUrl.isNullOrBlank())
                     binding.detailImage.hide()
                 binding.editNote.show()
+                binding.createdDate.text = String.format(getString(R.string.note_details_created), it.dateCreated)
+                binding.modifiedDate.text = String.format(getString(R.string.mote_details_last_modified), it.lastModifiedDate)
             }
         })
 

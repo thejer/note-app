@@ -48,20 +48,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                app:hintTextColor="@color/hint_white"
                 app:startIconDrawable="@drawable/ic_link"
-                android:background="@color/black_500"
                 android:hint="@string/image_link">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/hint_white"
+                    android:textColor="@color/white"
                     android:text="@{note.imageUrl}"
                     android:textSize="20sp"
+                    android:background="@color/black_500"
                     android:id="@+id/image_url_input"
                     android:textColorHint="@color/hint_white"
-                    android:background="@color/black_500"
                     />
 
             </com.google.android.material.textfield.TextInputLayout>

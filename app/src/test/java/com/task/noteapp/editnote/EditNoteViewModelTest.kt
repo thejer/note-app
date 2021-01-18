@@ -56,6 +56,7 @@ class EditNoteViewModelTest {
             "The stars see me, God bless the stars and God Bless me.",
             "https://picsum.photos/200",
             false,
+            "22/3/2021",
             "22/3/2021"
         )
 
@@ -71,6 +72,7 @@ class EditNoteViewModelTest {
             "The stars see me, God bless the stars and God Bless me.",
             "https://picsum.photos/200",
             true,
+            "22/3/2021",
             "22/3/2021"
         )
 
@@ -86,6 +88,7 @@ class EditNoteViewModelTest {
             "The stars see me, God bless the stars and God Bless me.",
             "https://picsum.photos/200",
             false,
+            "22/3/2021",
             "22/3/2021"
         )
 
@@ -101,6 +104,7 @@ class EditNoteViewModelTest {
             "The stars see me, God bless the stars and God Bless me.",
             "https://picsum.photos/200",
             false,
+            "22/3/2021",
             "22/3/2021"
         )
 

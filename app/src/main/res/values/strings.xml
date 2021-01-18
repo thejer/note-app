@@ -24,5 +24,7 @@
     <string name="discard_note">Discard Note</string>
     <string name="save_note">Save Note</string>
     <string name="cannot_save_note">Cannot save note, some field are invalid</string>
+    <string name="note_details_created">Created: %s</string>
+    <string name="mote_details_last_modified">Last Modified: %s</string>
 
 </resources>

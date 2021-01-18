@@ -42,6 +42,7 @@ class NotesViewModelTest {
                 "The stars see me, God bless the stars and God Bless me.",
                 "https://picsum.photos/200",
                 false,
+                "22/3/2021",
                 "22/3/2021"
             ),
             Note(
@@ -50,6 +51,7 @@ class NotesViewModelTest {
                 "The stars see me, God bless the stars and God Bless me.",
                 "https://picsum.photos/200",
                 false,
+                "22/3/2021",
                 "22/3/2021"
             ),
             Note(
@@ -58,6 +60,7 @@ class NotesViewModelTest {
                 "The stars see me, God bless the stars and God Bless me.",
                 "https://picsum.photos/200",
                 false,
+                "22/3/2021",
                 "22/3/2021"
             ))
         repository.saveNotes(notes)

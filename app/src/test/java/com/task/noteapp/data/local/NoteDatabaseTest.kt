@@ -46,6 +46,7 @@ class NoteDatabaseTest {
             "The stars see me, God bless the stars and God Bless me.",
             "https://picsum.photos/200",
             false,
+            "22/3/2021",
             "22/3/2021"
         )
         noteDao.insertNote(note)
@@ -63,6 +64,7 @@ class NoteDatabaseTest {
             "The stars see me, God bless the stars and God Bless me.",
             "https://picsum.photos/200",
             false,
+            "22/3/2021",
             "22/3/2021"
         )
         noteDao.insertNote(note)
@@ -79,6 +81,7 @@ class NoteDatabaseTest {
             "The stars see me, God bless the stars and God Bless me.",
             "https://picsum.photos/200",
             false,
+            "22/3/2021",
             "22/3/2021"
         )
         noteDao.insertNote(note)
@@ -101,6 +104,7 @@ class NoteDatabaseTest {
             "The stars see me, God bless the stars and God Bless me.",
             "https://picsum.photos/200",
             false,
+            "22/3/2021",
             "22/3/2021"
         )
         noteDao.insertNote(note)
