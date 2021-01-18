@@ -53,6 +53,14 @@ class FakeRepository: INoteRepository {
         return Success(1)
     }
 
+    override suspend fun bulkDeleteNotes(noteIds: MutableSet<String>): Result<Int> {
+        val keys = notesDBData.keys
+        if (!noteIds.contains( "noteId2")) keys.removeAll(noteIds)
+        if (keys.contains(noteIds.elementAt(0)))
+            return Error(ERROR_CODE, NOTE_DELETION_FAILED)
+        return Success(noteIds.size)
+    }
+
     fun saveNotes(notes: MutableList<Note>) {
         for (note in notes) {
             notesDBData[note.id] = note
