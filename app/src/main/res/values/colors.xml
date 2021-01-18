@@ -16,6 +16,7 @@
 
     <color name="primaryColor">#9fa8da</color>
     <color name="primaryLightColor">#d1d9ff</color>
+    <color name="primarySurfaceColor">#D9DFFA</color>
     <color name="primaryDarkColor">#6f79a8</color>
     <color name="secondaryColor">#00838f</color>
     <color name="secondaryLightColor">#4fb3bf</color>
