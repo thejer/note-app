@@ -23,11 +23,28 @@ class NotesViewModel @Inject constructor(
     val errorMessage: LiveData<String>
         get() = _errorMessage
 
+    private val _notesDeleted = MutableLiveData<Int>()
+    val notesDeleted: LiveData<Int>
+        get() = _notesDeleted
+
     fun getNotes() {
         viewModelScope.launch {
             when (val result = noteRepository.getNotes()) {
                 is Result.Success -> {
                     _notes.value = result.data
+                }
+                is Result.Error -> {
+                    _errorMessage.value = result.errorMessage
+                }
+            }
+        }
+    }
+
+    fun deleteNotes(noteIds: MutableSet<String>) {
+        viewModelScope.launch {
+            when (val result = noteRepository.bulkDeleteNotes(noteIds)) {
+                is Result.Success -> {
+                    _notesDeleted.value = result.data
                 }
                 is Result.Error -> {
                     _errorMessage.value = result.errorMessage

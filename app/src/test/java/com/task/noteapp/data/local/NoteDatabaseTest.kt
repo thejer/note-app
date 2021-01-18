@@ -108,10 +108,37 @@ class NoteDatabaseTest {
             "22/3/2021"
         )
         noteDao.insertNote(note)
-        val dbNotes = noteDao.getAllNotes()
-        assertThat(dbNotes.size, `is`(1))
-        noteDao.deleteNote(note.id)
-        val emptyNotes = noteDao.getAllNotes()
-        assertThat(emptyNotes.size, `is`(0))
+        val deletedNotes = noteDao.deleteNote(note.id)
+        assertThat(deletedNotes, `is`(1))
     }
+
+
+    @Test
+    @Throws(Exception::class)
+    fun `insertNotes And DeleteNotes`() = runBlocking {
+        val note1 = Note(
+            "noteId1",
+            "I see the stars",
+            "The stars see me, God bless the stars and God Bless me.",
+            "https://picsum.photos/200",
+            false,
+            "22/3/2021",
+            "22/3/2021"
+        )
+        val note2 = Note(
+            "noteId2",
+            "I see the stars",
+            "The stars see me, God bless the stars and God Bless me.",
+            "https://picsum.photos/200",
+            false,
+            "22/3/2021",
+            "22/3/2021"
+        )
+        noteDao.insertNote(note1)
+        noteDao.insertNote(note2)
+        val deletedNotes = noteDao.deleteNotes(mutableSetOf("noteId1", "noteId2"))
+        assertThat(deletedNotes, `is`(2))
+    }
+
+
 }

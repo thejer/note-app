@@ -89,4 +89,20 @@ class NoteRepository @Inject constructor(
 
         }
 
+    override suspend fun bulkDeleteNotes(noteIds: MutableSet<String>): Result<Int> =
+        withContext(ioDispatcher) {
+            try {
+                val deletedNotes = noteDao.deleteNotes(noteIds)
+                if (deletedNotes == null || deletedNotes == 0)
+                    return@withContext Error(
+                        GENERIC_ERROR_CODE,
+                        ERROR_DELETING_NOTE
+                    ) else
+                    return@withContext Success(deletedNotes)
+            } catch (e: Exception) {
+                return@withContext Error(GENERIC_ERROR_CODE, GENERIC_ERROR_MESSAGE)
+            }
+        }
+
+
 }

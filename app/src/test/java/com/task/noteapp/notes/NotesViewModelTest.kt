@@ -3,6 +3,7 @@ package com.task.noteapp.notes
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.task.noteapp.LiveDataTestUtil
 import com.task.noteapp.data.FakeRepository
+import com.task.noteapp.data.FakeRepository.Companion.NOTE_DELETION_FAILED
 import com.task.noteapp.data.FakeRepository.Companion.NO_NOTES
 import com.task.noteapp.data.model.Note
 import kotlinx.coroutines.Dispatchers
@@ -86,5 +87,49 @@ class NotesViewModelTest {
         viewModel.getNotes()
         assertThat(LiveDataTestUtil.getValue(viewModel.errorMessage), `is`(NO_NOTES))
     }
+
+    @Test
+    fun `deleteNotes on success notesDeleted must be as expected`() {
+        val notes = mutableListOf(
+            Note(
+                "noteId1",
+                "I see the stars",
+                "The stars see me, God bless the stars and God Bless me.",
+                "https://picsum.photos/200",
+                false,
+                "22/3/2021",
+                "22/3/2021"
+            ),
+            Note(
+                "noteId2",
+                "I see the Moon",
+                "The stars see me, God bless the stars and God Bless me.",
+                "https://picsum.photos/200",
+                false,
+                "22/3/2021",
+                "22/3/2021"
+            ),
+            Note(
+                "noteId3",
+                "I see the Sun",
+                "The stars see me, God bless the stars and God Bless me.",
+                "https://picsum.photos/200",
+                false,
+                "22/3/2021",
+                "22/3/2021"
+            ))
+        repository.saveNotes(notes)
+        viewModel.deleteNotes(mutableSetOf("noteId1", "noteId3"))
+        assertThat(LiveDataTestUtil.getValue(viewModel.notesDeleted), `is`(2))
+    }
+
+
+    @Test
+    fun `deleteNotes on failure error message must be valid`() {
+        viewModel.deleteNotes(mutableSetOf("noteId2", "noteId3"))
+        assertThat(LiveDataTestUtil.getValue(viewModel.errorMessage), `is`(NOTE_DELETION_FAILED))
+    }
+
+
 
 }

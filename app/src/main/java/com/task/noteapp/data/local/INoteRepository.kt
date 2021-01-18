@@ -15,4 +15,6 @@ interface INoteRepository {
 
     suspend fun deleteNote(noteId: String): Result<Int>
 
+    suspend fun bulkDeleteNotes(noteIds: MutableSet<String>): Result<Int>
+
 }
