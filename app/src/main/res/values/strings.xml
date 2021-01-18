@@ -4,5 +4,27 @@
     <string name="long_description_text">Consider this as a showcase of your skills. Approach it as if you are going to make a pull request on our main/master branch. We are expecting at least: • Clear, defined architecture. • Apply the Material Design Guidelines as much as possible. • Meaningful tests (You do not need to have 100% coverage, but we will be looking for tests). • Good and lint verified syntax.</string>
     <string name="long_url">https://www.google.com/just-a-random-image-i-search-for-on-google-yeah/this-is-page-2</string>
     <string name="empty_notes_text">You have no notes. To add new notes, tap</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title">Title</string>
+    <string name="note_description">Note description</string>
+    <string name="image_link">Image Link</string>
+    <string name="invalid_image_url">Image Url is invalid.</string>
+    <string name="note_added">Note added successfully</string>
+    <string name="detail_description">As we all know, Google introduced Navigation Components some time ago. And moreover there is already 2.1.0 version at the moment. But there is small problem: we can not go back to specific fragment without its recreation. So this small article will be about workaround, you can use to eliminate such flaw. The problem Suppose we have One Activity Several fragments navigation (by the way I wrote about such pattern previously, you can check that here). And suppose we have 3 fragments. Fragment one has its own state, which can be saved and restore, and fragment three contain a button to go back to the first one. You can check base project here(code) and here(xml). To navigate from third fragment to first one we use navigation action with attribute popUpTo: To understand the current problem we need to change state of first fragment to be different from default one, then go to the third fragment, and then press a button to navigate back to the first one and BAM, you loose you saved state and have default one again:</string>
+    <string name="note_updated">The note has been updated.</string>
+    <string name="add_note">Add note</string>
+    <string name="empty_notes_icon">Empty notes icon</string>
+    <string name="edit_note">Edit note</string>
+    <string name="note_image">Note image</string>
+    <string name="delete_note">Delete Note</string>
+    <string name="discard_editing_title">Done Editing?</string>
+    <string name="discard_editing_message">Do you want to save, continue editing, or discard this note?</string>
+    <string name="continue_editing">Continue editing</string>
+    <string name="discard_note">Discard Note</string>
+    <string name="save_note">Save Note</string>
+    <string name="cannot_save_note">Cannot save note, some field are invalid</string>
+    <string name="note_details_created">Created: %s</string>
+    <string name="mote_details_last_modified">Last Modified: %s</string>
 
 </resources>

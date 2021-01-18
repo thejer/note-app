@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -49,8 +51,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
 
     // Navigation
-    implementation "android.arch.navigation:navigation-fragment-ktx:1.0.0"
-    implementation "android.arch.navigation:navigation-ui-ktx:1.0.0"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     // Coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9"
@@ -60,6 +62,7 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:1.1.0"
     implementation "androidx.browser:browser:1.3.0"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.fragment:fragment-ktx:1.3.0-rc01'
 
     //Dagger 2
     kapt "com.google.dagger:dagger-compiler:2.27"
@@ -71,6 +74,9 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.2"
+
+    // coil
+    implementation "io.coil-kt:coil:1.0.0-rc3"
 
     testImplementation 'android.arch.core:core-testing:1.1.1'
     testImplementation "org.hamcrest:hamcrest-all:1.3"

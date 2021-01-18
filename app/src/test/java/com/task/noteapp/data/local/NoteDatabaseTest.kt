@@ -1,7 +1,6 @@
 package com.task.noteapp.data.local
 
 import android.content.Context
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -11,7 +10,6 @@ import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.After
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import java.io.IOException
@@ -23,9 +21,6 @@ class NoteDatabaseTest {
     private lateinit var noteDao: NoteDao
 
     private lateinit var db: NoteDatabase
-
-    @get:Rule
-    val instantExecutorRule = InstantTaskExecutorRule()
 
     @Before
     fun createDb() {
@@ -44,13 +39,14 @@ class NoteDatabaseTest {
 
     @Test
     @Throws(Exception::class)
-    fun insertNoteAndGetNotes() = runBlocking {
+    fun `insertNote And GetNotes`() = runBlocking {
         val note = Note(
             UUID.randomUUID().toString(),
             "I see the stars",
             "The stars see me, God bless the stars and God Bless me.",
             "https://picsum.photos/200",
             false,
+            "22/3/2021",
             "22/3/2021"
         )
         noteDao.insertNote(note)
@@ -61,13 +57,14 @@ class NoteDatabaseTest {
 
     @Test
     @Throws(Exception::class)
-    fun insertNoteAndGetNoteById() = runBlocking {
+    fun `insertNote And GetNoteById`() = runBlocking {
         val note = Note(
             UUID.randomUUID().toString(),
             "I see the stars",
             "The stars see me, God bless the stars and God Bless me.",
             "https://picsum.photos/200",
             false,
+            "22/3/2021",
             "22/3/2021"
         )
         noteDao.insertNote(note)
@@ -77,13 +74,14 @@ class NoteDatabaseTest {
 
     @Test
     @Throws(Exception::class)
-    fun insertNoteAndUpdateNote() = runBlocking {
+    fun `insertNote And UpdateNote`() = runBlocking {
         val note = Note(
             UUID.randomUUID().toString(),
             "I see the stars",
             "The stars see me, God bless the stars and God Bless me.",
             "https://picsum.photos/200",
             false,
+            "22/3/2021",
             "22/3/2021"
         )
         noteDao.insertNote(note)
@@ -99,13 +97,14 @@ class NoteDatabaseTest {
 
     @Test
     @Throws(Exception::class)
-    fun insertNoteAndDeleteNote() = runBlocking {
+    fun `insertNote And DeleteNote`() = runBlocking {
         val note = Note(
             UUID.randomUUID().toString(),
             "I see the stars",
             "The stars see me, God bless the stars and God Bless me.",
             "https://picsum.photos/200",
             false,
+            "22/3/2021",
             "22/3/2021"
         )
         noteDao.insertNote(note)

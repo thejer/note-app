@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="note"
             type="com.task.noteapp.data.model.Note" />
     </data>
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,18 +29,32 @@
                 android:id="@+id/note_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:ellipsize="end"
+                android:maxWidth="250dp"
+                android:maxLines="1"
                 android:text="@{note.title}"
+                android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="The gift of Christ" />
+
+
+            <TextView
+                android:id="@+id/is_edited"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/edited"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/note_title"
+                app:layout_constraintStart_toEndOf="@id/note_title" />
 
             <TextView
                 android:id="@+id/date_created"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
                 android:text="@{note.dateCreated}"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@id/note_title"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:text="23/2/2021" />
@@ -63,27 +78,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:layout_marginEnd="16dp"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:padding="2dp"
+                android:text="@{note.imageUrl}"
                 android:textColor="@color/link_blue"
                 android:textSize="14sp"
-                android:text="@{note.imageUrl}"
-                app:layout_constraintEnd_toStartOf="@id/is_edited"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/note_description"
                 tools:text="@string/long_url" />
-
-            <TextView
-                android:id="@+id/is_edited"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@id/image_url"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:text="@string/edited"
-                />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

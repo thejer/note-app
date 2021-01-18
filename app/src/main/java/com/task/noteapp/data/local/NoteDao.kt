@@ -13,11 +13,11 @@ interface NoteDao {
     suspend fun getNoteById(id: String): Note?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertNote(note: Note)
+    suspend fun insertNote(note: Note): Long?
 
     @Update
-    suspend fun updateNote(note: Note)
+    suspend fun updateNote(note: Note): Int?
 
     @Query("DELETE FROM note WHERE id = :noteId")
-    suspend fun deleteNote(noteId: String)
+    suspend fun deleteNote(noteId: String): Int?
 }

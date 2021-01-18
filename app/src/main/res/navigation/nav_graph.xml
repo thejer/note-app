@@ -8,8 +8,55 @@
     <fragment
         android:id="@+id/notesFragment"
         android:name="com.task.noteapp.notes.NotesFragment"
-        android:label="fragment_landing_page"
-        tools:layout="@layout/fragment_notes" >
+        android:label="fragment_notes"
+        tools:layout="@layout/fragment_notes">
+
+        <action
+            android:id="@+id/action_notesFragment_to_editNoteFragment"
+            app:destination="@id/editNoteFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_notesFragment_to_noteDetailsFragment"
+            app:destination="@id/noteDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
     </fragment>
+
+    <fragment
+        android:id="@+id/editNoteFragment"
+        android:name="com.task.noteapp.editnote.EditNoteFragment"
+        android:label="fragment_edit_note"
+        tools:layout="@layout/fragment_edit_note">
+        <argument
+            android:name="note"
+            android:defaultValue="@null"
+            app:argType="com.task.noteapp.data.model.Note"
+            app:nullable="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/noteDetailsFragment"
+        android:name="com.task.noteapp.notedetails.NoteDetailsFragment"
+        android:label="NoteDetailsFragment"
+        tools:layout="@layout/fragment_note_details">
+        <argument
+            android:name="noteId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_noteDetailsFragment_to_editNoteFragment"
+            app:destination="@id/editNoteFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
 
 </navigation>
