@@ -18,6 +18,7 @@ import com.task.noteapp.extensions.isEmpty
 import com.task.noteapp.extensions.showDialog
 import com.task.noteapp.extensions.showSnackbar
 import com.task.noteapp.extensions.stringContent
+import com.task.noteapp.main.MainActivity
 import com.task.noteapp.utils.DateUtils
 import com.task.noteapp.utils.validateTextLayouts
 import java.util.*
@@ -43,6 +44,10 @@ class EditNoteFragment : Fragment() {
         binding.lifecycleOwner = this
         return binding.root
     }
+    private val mainActivity: MainActivity
+        get() {
+            return activity as? MainActivity ?: throw IllegalStateException("Not attached!")
+        }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -76,6 +81,12 @@ class EditNoteFragment : Fragment() {
         binding.saveNote.setOnClickListener {
             saveNote(note)
         }
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        mainActivity.showUpButton()
     }
 
     private fun saveNote(note: Note?) {

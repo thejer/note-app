@@ -12,6 +12,7 @@ import com.task.noteapp.R
 import com.task.noteapp.databinding.FragmentNotesBinding
 import com.task.noteapp.extensions.showSnackbar
 import com.task.noteapp.extensions.viewUrl
+import com.task.noteapp.main.MainActivity
 import javax.inject.Inject
 
 class NotesFragment : Fragment() {
@@ -26,6 +27,11 @@ class NotesFragment : Fragment() {
     private lateinit var menuItem: MenuItem
 
     private lateinit var viewModel: NotesViewModel
+
+    private val mainActivity: MainActivity
+        get() {
+            return activity as? MainActivity ?: throw IllegalStateException("Not attached!")
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,10 +65,14 @@ class NotesFragment : Fragment() {
         return false
     }
 
+    override fun onResume() {
+        super.onResume()
+        mainActivity.hideUpButton()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (requireActivity().applicationContext as App).component.inject(this)
-
         viewModel = ViewModelProvider(this, viewModelFactory).get(NotesViewModel::class.java)
         binding.viewModel = viewModel
         setupRecyclerview()

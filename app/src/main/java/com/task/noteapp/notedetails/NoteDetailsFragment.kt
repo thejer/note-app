@@ -10,6 +10,7 @@ import com.task.noteapp.R
 import com.task.noteapp.data.model.Note
 import com.task.noteapp.databinding.FragmentNoteDetailsBinding
 import com.task.noteapp.extensions.hide
+import com.task.noteapp.main.MainActivity
 import javax.inject.Inject
 
 class NoteDetailsFragment : Fragment() {
@@ -24,6 +25,11 @@ class NoteDetailsFragment : Fragment() {
     private var selectedNote: Note? = null
 
     private var noteId: String? = null
+
+    private val mainActivity: MainActivity
+        get() {
+            return activity as? MainActivity ?: throw IllegalStateException("Not attached!")
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,9 +56,17 @@ class NoteDetailsFragment : Fragment() {
                 viewModel.deleteNote(noteId!!)
                 return true
             }
+            android.R.id.home -> {
+
+            }
         }
 
         return false
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mainActivity.showUpButton()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

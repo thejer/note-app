@@ -15,7 +15,7 @@
     <string name="note_updated">The note has been updated.</string>
     <string name="add_note">Add note</string>
     <string name="empty_notes_icon">Empty notes icon</string>
-    <string name="edit_note">Edit note</string>
+    <string name="edit_note">Edit Note</string>
     <string name="note_image">Note image</string>
     <string name="delete_note">Delete Note</string>
     <string name="discard_editing_title">Done Editing?</string>
@@ -26,5 +26,7 @@
     <string name="cannot_save_note">Cannot save note, some field are invalid</string>
     <string name="note_details_created">Created: %s</string>
     <string name="mote_details_last_modified">Last Modified: %s</string>
+    <string name="my_notes">My Notes</string>
+    <string name="note_details">Note Details</string>
 
 </resources>
