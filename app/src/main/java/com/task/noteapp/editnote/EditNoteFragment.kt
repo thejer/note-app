@@ -51,7 +51,7 @@ class EditNoteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (requireActivity().applicationContext as App).component.inject(this)
+        (requireActivity().applicationContext as App).appComponent().inject(this)
         viewModel = ViewModelProvider(this, viewModelFactory).get(EditNoteViewModel::class.java)
 
         viewModel.noteAdded.observe(viewLifecycleOwner, {

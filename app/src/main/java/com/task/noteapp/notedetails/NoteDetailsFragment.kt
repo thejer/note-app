@@ -72,7 +72,7 @@ class NoteDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (requireActivity().applicationContext as App).component.inject(this)
+        (requireActivity().applicationContext as App).appComponent().inject(this)
         val args = NoteDetailsFragmentArgs.fromBundle(requireArguments())
         noteId = args.noteId
 

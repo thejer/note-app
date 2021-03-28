@@ -61,7 +61,6 @@ class NotesFragment : Fragment() {
                 return true
             }
         }
-
         return false
     }
 
@@ -72,7 +71,7 @@ class NotesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (requireActivity().applicationContext as App).component.inject(this)
+        (requireActivity().applicationContext as App).appComponent().inject(this)
         viewModel = ViewModelProvider(this, viewModelFactory).get(NotesViewModel::class.java)
         binding.viewModel = viewModel
         setupRecyclerview()
@@ -103,9 +102,7 @@ class NotesFragment : Fragment() {
 
         binding.addNote.setOnClickListener {
             findNavController()
-                .navigate(
-                    NotesFragmentDirections.actionNotesFragmentToEditNoteFragment()
-                )
+                .navigate(NotesFragmentDirections.actionNotesFragmentToEditNoteFragment())
         }
     }
 

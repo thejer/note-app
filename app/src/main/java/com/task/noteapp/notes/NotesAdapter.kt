@@ -38,6 +38,7 @@ class NotesAdapter(
     inner class NotesViewHolder(private val binding: NoteItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(note: Note) {
+
             binding.note = note
             binding.noteCard.setOnLongClickListener {
                 noteLongClickedListener(note.id, binding.noteCard)
